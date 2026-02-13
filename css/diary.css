@@ -1,0 +1,118 @@
+/* diary.css - 恋爱日记页面专属样式 */
+
+/* 页面整体容器 */
+.diary-page {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* 页面标题 */
+.diary-page .page-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #2c3e50;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+/* 日记卡片容器 */
+.diary-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 日记卡片悬浮效果（可选，增加交互感） */
+.diary-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* 日记头部（日期+事由+给谁） */
+.diary-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 16px;
+    font-size: 16px;
+    color: #666;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed #eee;
+}
+
+/* 日期样式 */
+.diary-date {
+    font-weight: 600;
+    color: #3498db;
+}
+
+/* 事由样式 */
+.diary-reason {
+    color: #555;
+    font-size: 15px;
+}
+
+/* 谁写给谁 */
+.diary-to {
+    margin-left: auto;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+/* 下划线框内容区域 */
+.diary-content {
+    border-left: 3px solid #3498db;
+    padding: 20px 24px;
+    background-color: #f8fafc;
+    border-radius: 8px;
+    line-height: 1.8;
+    font-size: 16px;
+    white-space: pre-line;
+    letter-spacing: 0.5px;
+    color: #333;
+}
+
+/* 鱼写给海的样式区分 */
+.diary-card.yu .diary-to {
+    color: #3498db;
+}
+.diary-card.yu .diary-content {
+    border-left-color: #3498db;
+    background-color: #f0f8fb;
+}
+
+/* 海写给鱼的样式区分 */
+.diary-card.hai .diary-to {
+    color: #e74c3c;
+}
+.diary-card.hai .diary-content {
+    border-left-color: #e74c3c;
+    background-color: #fef0f0;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .diary-page {
+        margin: 20px auto;
+    }
+    .diary-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .diary-to {
+        margin-left: 0;
+        align-self: flex-start;
+    }
+    .diary-content {
+        padding: 16px 20px;
+        font-size: 15px;
+    }
+}
