@@ -94,39 +94,54 @@ body {
 /* 4. 悬浮文案层：居中显示，更突出的浪漫样式 */
 .float-container {
     position: fixed;
-    top: 50%;
+    top: 50%; /* 避开导航栏的位置 */
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 3;
     text-align: center;
     color: #fff;
-    padding: 0 20px;
-    /* 加一层半透明背景，文字更清晰 */
+    /* 关键：弹性布局实现内部垂直居中 */
+    display: flex;
+    flex-direction: column; /* 垂直排列子元素 */
+    justify-content: center; /* 垂直居中 */
+    align-items: center; /* 水平居中（兜底） */
+    /* 原有样式保留 */
     background: rgba(0,0,0,0.2);
     padding: 30px 50px;
     border-radius: 20px;
     backdrop-filter: blur(10px);
+    /* 可选：固定最小高度，保证居中效果 */
+    min-height: 200px;
+    width: 80%; /* 适配手机端宽度 */
+    max-width: 600px; /* 电脑端最大宽度 */
 }
 
-/* 主标题：鱼与海的二人世界 */
+/* 主标题：鱼与海的二人世界（蓝色系发光） */
 .float-title {
     font-size: 52px;
     font-weight: 700;
-    margin-bottom: 20px;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.9),
+    /* 去掉默认margin-bottom，用gap控制间距 */
+    margin: 0;
+    text-shadow: 0 0 15px rgba(45, 125, 154, 0.9), /* 深海蓝发光 */
                  3px 3px 6px rgba(0, 0, 0, 0.6);
     letter-spacing: 6px;
 }
 
-/* 计时器文案：我们相恋已经XX天了！ */
+/* 计时器文案：我们相恋已经XX天了！（浅天蓝） */
 .float-timer {
     font-size: 38px;
     font-weight: 600;
-    color: #ffebee;
-    text-shadow: 0 0 10px rgba(230, 100, 101, 0.9),
+    color: #e8f4f8; /* 浅天蓝文字 */
+    /* 去掉默认margin，用gap控制间距 */
+    margin: 0;
+    text-shadow: 0 0 10px rgba(45, 125, 154, 0.9), /* 深海蓝发光 */
                  2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* 关键：给悬浮容器加gap，控制两行文字的间距 */
+.float-container {
+    gap: 20px; /* 标题和计时器之间的间距，可根据喜好调整 */
+}
 
 /* 半透明毛玻璃卡片 */
 .card {
@@ -151,5 +166,10 @@ body {
         height: 25%; /* 手机端保持4行 */
         animation-duration: 250s; /* 手机端滚动更慢 */
     }
+    /* 手机端悬浮容器间距稍小 */
+    .float-container {
+        gap: 15px;
+        padding: 20px 30px; /* 手机端内边距更小 */
+        min-height: 160px;
+    }
 }
-

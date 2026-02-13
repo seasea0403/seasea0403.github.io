@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我们的旅行足迹 | 鱼与海的二人世界</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/album.css">
+    <style>
+        /* 图片放大弹窗样式 - 核心优化卡顿 */
+        .photo-viewer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw; /* 视口宽度，避免滚动条影响 */
+            height: 100vh; /* 视口高度，铺满屏幕 */
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1001;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* 禁止弹窗内滚动 */
+            touch-action: none; /* 移动端禁止触摸滑动 */
+            will-change: opacity; /* 告诉浏览器提前优化渲染 */
+        }
+
+        .photo-viewer-content {
+            max-width: 95%;
+            max-height: 95%;
+            width: auto;
+            height: auto;
+            object-fit: contain; /* 图片完整显示，不变形 */
+            transform: translateZ(0); /* 开启硬件加速，丝滑渲染 */
+            image-rendering: optimizeQuality; /* 优化图片渲染质量 */
+            /* 图片加载过渡，避免突然出现 */
+            opacity: 0;
+            transition: opacity 0.2s ease-out;
+        }
+
+        /* 图片加载完成后显示过渡 */
+        .photo-viewer-content.loaded {
+            opacity: 1;
+        }
+
+        .photo-viewer-close {
+            position: fixed; /* 固定位置，不随图片位移 */
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1002; /* 高于图片，不被遮挡 */
+            transition: color 0.2s ease; /* 丝滑hover效果 */
+        }
+
+        .photo-viewer-close:hover {
+            color: #ccc;
+        }
+
+        /* 相册照片样式 - 保留丝滑悬浮缩放 */
+        .album-photo {
+            transition: transform 0.3s ease-out; /* 更快更丝滑的过渡 */
+            will-change: transform; /* 提前优化渲染 */
+            backface-visibility: hidden; /* 避免缩放时的模糊/卡顿 */
+        }
+
+        /* 悬浮轻微缩放，不夸张，更丝滑 */
+        .album-photo:hover {
+            transform: scale(1.02); /* 小幅度缩放，减少性能开销 */
+        }
+
+        /* 加载失败的照片取消交互 */
+        .album-photo[alt*="加载失败"] {
+            cursor: default;
+            transform: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏（相册页高亮） -->
+    <nav class="nav-bar">
+        <a href="index.html">首页</a>
+        <a href="chat.html">聊天记录</a>
+        <a href="album.html" class="active">我们的相册</a>
+        <a href="diary.html">恋爱日记</a>
+        <a href="wish.html">愿望清单</a>
+        <a href="message.html">小留言板</a>
+        <a href="plan.html">未来计划</a>
+    </nav>
+
+    <!-- 页面标题 -->
+    <h1 class="page-title">🗺️ 我们的旅行足迹</h1>
+
+    <!-- 核心：中国地图+城市标注 -->
+    <!-- 核心：中国地图+城市标注 -->
+    <div class="map-container">
+        <!-- 中国地图背景 -->
+        <img src="images/map/china-map.png" alt="中国地图" class="china-map">
+
+        <!-- 三亚：深蓝色 -->
+        <div class="city-marker deep-blue" data-city="sanya" style="top: 90%; left: 61%;">
+            <span class="city-name">三亚</span>
+        </div>
+        <!-- 天津：深蓝色 -->
+        <div class="city-marker deep-blue" data-city="tianjin" style="top: 36%; left: 73%;">
+            <span class="city-name">天津</span>
+        </div>
+        <!-- 大连：深蓝色 -->
+        <div class="city-marker deep-blue" data-city="dalian" style="top: 36%; left: 81.5%;">
+            <span class="city-name">大连</span>
+        </div>
+        <!-- 长沙：深蓝色 -->
+        <div class="city-marker deep-blue" data-city="changsha" style="top: 67%; left: 66%;">
+            <span class="city-name">长沙</span>
+        </div>
+        <!-- 武汉：深蓝色 -->
+        <div class="city-marker deep-blue" data-city="wuhan" style="top: 61%; left: 67%;">
+            <span class="city-name">武汉</span>
+        </div>
+        <!-- 西双版纳：深蓝色 -->
+        <div class="city-marker deep-blue" data-city="xishuangbanna" style="top: 80%; left: 43%;">
+            <span class="city-name">版纳</span>
+        </div>
+        <!-- 昆明：深蓝色 -->
+        <div class="city-marker deep-blue" data-city="kunming" style="top: 75%; left: 47%;">
+            <span class="city-name">昆明</span>
+        </div>
+        <!-- 郑州：深蓝色 -->
+        <div class="city-marker deep-blue" data-city="zhengzhou" style="top: 51%; left: 66%;">
+            <span class="city-name">郑州</span>
+        </div>
+        <!-- 睢县：深蓝色 -->
+        <div class="city-marker deep-blue" data-city="suixian" style="top: 51%; left: 70%;">
+            <span class="city-name">睢县</span>
+        </div>
+        <!-- 上海：深蓝色 -->
+        <div class="city-marker deep-blue" data-city="shanghai" style="top: 58%; left: 82%;">
+            <span class="city-name">上海</span>
+        </div>
+        <!-- 杭州：深蓝色 -->
+        <div class="city-marker deep-blue" data-city="hangzhou" style="top: 62%; left: 79%;">
+            <span class="city-name">杭州</span>
+        </div>
+    </div>
+
+    <!-- 相册弹窗（默认隐藏） -->
+    <div class="album-modal" id="albumModal">
+        <span class="close-btn" onclick="closeAlbumModal()">&times;</span>
+        <h2 class="modal-title" id="modalTitle">三亚旅行相册</h2>
+        <div class="album-photos" id="albumPhotos"></div>
+    </div>
+
+    <!-- 弹窗遮罩（默认隐藏） -->
+    <div class="modal-mask" id="modalMask" onclick="closeAlbumModal()"></div>
+
+    <!-- 图片放大弹窗 -->
+    <div class="photo-viewer" id="photoViewer">
+        <span class="photo-viewer-close" onclick="closePhotoViewer()">&times;</span>
+        <img class="photo-viewer-content" id="viewerImage" src="" alt="放大的照片">
+    </div>
+
+    <!-- 脚本：优化交互逻辑，保证丝滑 -->
+    <script>
+        // ===================== 配置区（无需修改）=====================
+        const cityPhotos = {
+            // 三亚 17 张
+            sanya: [
+                "images/travel/sanya/sanya_1.jpg",
+                "images/travel/sanya/sanya_2.jpg",
+                "images/travel/sanya/sanya_3.jpg",
+                "images/travel/sanya/sanya_4.jpg",
+                "images/travel/sanya/sanya_5.jpg",
+                "images/travel/sanya/sanya_6.jpg",
+                "images/travel/sanya/sanya_7.jpg",
+                "images/travel/sanya/sanya_8.jpg",
+                "images/travel/sanya/sanya_9.jpg",
+                "images/travel/sanya/sanya_10.jpg",
+                "images/travel/sanya/sanya_11.jpg",
+                "images/travel/sanya/sanya_12.jpg",
+                "images/travel/sanya/sanya_13.jpg",
+                "images/travel/sanya/sanya_14.jpg",
+                "images/travel/sanya/sanya_15.jpg",
+                "images/travel/sanya/sanya_16.jpg",
+                "images/travel/sanya/sanya_17.jpg"
+            ],
+            // 天津 5 张
+            tianjin: [
+                "images/travel/tianjin/tianjin_1.jpg",
+                "images/travel/tianjin/tianjin_2.jpg",
+                "images/travel/tianjin/tianjin_3.jpg",
+                "images/travel/tianjin/tianjin_4.jpg",
+                "images/travel/tianjin/tianjin_5.jpg"
+            ],
+            // 大连 11 张
+            dalian: [
+                "images/travel/dalian/dalian_1.jpg",
+                "images/travel/dalian/dalian_2.jpg",
+                "images/travel/dalian/dalian_3.jpg",
+                "images/travel/dalian/dalian_4.jpg",
+                "images/travel/dalian/dalian_5.jpg",
+                "images/travel/dalian/dalian_6.jpg",
+                "images/travel/dalian/dalian_7.jpg",
+                "images/travel/dalian/dalian_8.jpg",
+                "images/travel/dalian/dalian_9.jpg",
+                "images/travel/dalian/dalian_10.jpg",
+                "images/travel/dalian/dalian_11.jpg"
+            ],
+            // 长沙 10 张
+            changsha: [
+                "images/travel/changsha/changsha_1.jpg",
+                "images/travel/changsha/changsha_2.jpg",
+                "images/travel/changsha/changsha_3.jpg",
+                "images/travel/changsha/changsha_4.jpg",
+                "images/travel/changsha/changsha_5.jpg",
+                "images/travel/changsha/changsha_6.jpg",
+                "images/travel/changsha/changsha_7.jpg",
+                "images/travel/changsha/changsha_8.jpg",
+                "images/travel/changsha/changsha_9.jpg",
+                "images/travel/changsha/changsha_10.jpg"
+            ],
+            // 武汉 7 张
+            wuhan: [
+                "images/travel/wuhan/wuhan_1.jpg",
+                "images/travel/wuhan/wuhan_2.jpg",
+                "images/travel/wuhan/wuhan_3.jpg",
+                "images/travel/wuhan/wuhan_4.jpg",
+                "images/travel/wuhan/wuhan_5.jpg",
+                "images/travel/wuhan/wuhan_6.jpg",
+                "images/travel/wuhan/wuhan_7.jpg"
+            ],
+            // 西双版纳 15 张
+            xishuangbanna: [
+                "images/travel/xishuangbanna/xishuangbanna_1.jpg",
+                "images/travel/xishuangbanna/xishuangbanna_2.jpg",
+                "images/travel/xishuangbanna/xishuangbanna_3.jpg",
+                "images/travel/xishuangbanna/xishuangbanna_4.jpg",
+                "images/travel/xishuangbanna/xishuangbanna_5.jpg",
+                "images/travel/xishuangbanna/xishuangbanna_6.jpg",
+                "images/travel/xishuangbanna/xishuangbanna_7.jpg",
+                "images/travel/xishuangbanna/xishuangbanna_8.jpg",
+                "images/travel/xishuangbanna/xishuangbanna_9.jpg",
+                "images/travel/xishuangbanna/xishuangbanna_10.jpg",
+                "images/travel/xishuangbanna/xishuangbanna_11.jpg",
+                "images/travel/xishuangbanna/xishuangbanna_12.jpg",
+                "images/travel/xishuangbanna/xishuangbanna_13.jpg",
+                "images/travel/xishuangbanna/xishuangbanna_14.jpg",
+                "images/travel/xishuangbanna/xishuangbanna_15.jpg"
+            ],
+            // 昆明 13 张
+            kunming: [
+                "images/travel/kunming/kunming_1.jpg",
+                "images/travel/kunming/kunming_2.jpg",
+                "images/travel/kunming/kunming_3.jpg",
+                "images/travel/kunming/kunming_4.jpg",
+                "images/travel/kunming/kunming_5.jpg",
+                "images/travel/kunming/kunming_6.jpg",
+                "images/travel/kunming/kunming_7.jpg",
+                "images/travel/kunming/kunming_8.jpg",
+                "images/travel/kunming/kunming_9.jpg",
+                "images/travel/kunming/kunming_10.jpg",
+                "images/travel/kunming/kunming_11.jpg",
+                "images/travel/kunming/kunming_12.jpg",
+                "images/travel/kunming/kunming_13.jpg"
+            ],
+            // 郑州 3 张
+            zhengzhou: [
+                "images/travel/zhengzhou/zhengzhou_1.jpg",
+                "images/travel/zhengzhou/zhengzhou_2.jpg",
+                "images/travel/zhengzhou/zhengzhou_3.jpg"
+            ],
+            // 睢县 3 张
+            suixian: [
+                "images/travel/suixian/suixian_1.jpg",
+                "images/travel/suixian/suixian_2.jpg",
+                "images/travel/suixian/suixian_3.jpg"
+            ],
+            // 上海 11 张
+            shanghai: [
+                "images/travel/shanghai/shanghai_1.jpg",
+                "images/travel/shanghai/shanghai_2.jpg",
+                "images/travel/shanghai/shanghai_3.jpg",
+                "images/travel/shanghai/shanghai_4.jpg",
+                "images/travel/shanghai/shanghai_5.jpg",
+                "images/travel/shanghai/shanghai_6.jpg",
+                "images/travel/shanghai/shanghai_7.jpg",
+                "images/travel/shanghai/shanghai_8.jpg",
+                "images/travel/shanghai/shanghai_9.jpg",
+                "images/travel/shanghai/shanghai_10.jpg",
+                "images/travel/shanghai/shanghai_11.jpg"
+            ],
+            // 杭州 10 张
+            hangzhou: [
+                "images/travel/hangzhou/hangzhou_1.jpg",
+                "images/travel/hangzhou/hangzhou_2.jpg",
+                "images/travel/hangzhou/hangzhou_3.jpg",
+                "images/travel/hangzhou/hangzhou_4.jpg",
+                "images/travel/hangzhou/hangzhou_5.jpg",
+                "images/travel/hangzhou/hangzhou_6.jpg",
+                "images/travel/hangzhou/hangzhou_7.jpg",
+                "images/travel/hangzhou/hangzhou_8.jpg",
+                "images/travel/hangzhou/hangzhou_9.jpg",
+                "images/travel/hangzhou/hangzhou_10.jpg"
+            ]
+        };
+
+        const cityNames = {
+            sanya: "三亚",
+            tianjin: "天津",
+            dalian: "大连",
+            changsha: "长沙",
+            wuhan: "武汉",
+            xishuangbanna: "西双版纳",
+            kunming: "昆明",
+            zhengzhou: "郑州",
+            suixian: "睢县",
+            shanghai: "上海",
+            hangzhou: "杭州"
+        };
+        // ================================================================
+
+        // 缓存预加载的图片，避免重复加载
+        const preloadedImages = new Map();
+
+        // 打开相册弹窗
+        function openAlbumModal(cityKey) {
+            document.getElementById('albumModal').style.display = 'block';
+            document.getElementById('modalMask').style.display = 'block';
+            
+            document.getElementById('modalTitle').textContent = `${cityNames[cityKey]} 旅行相册`;
+            
+            const photosContainer = document.getElementById('albumPhotos');
+            photosContainer.innerHTML = '';
+            
+            cityPhotos[cityKey].forEach(photo => {
+                const img = document.createElement('img');
+                img.src = photo;
+                img.alt = `${cityNames[cityKey]}旅行照片`;
+                img.className = 'album-photo';
+                
+                // 提前预加载放大用的图片，缓存起来
+                if (!preloadedImages.has(photo)) {
+                    const preloadImg = new Image();
+                    preloadImg.src = photo;
+                    preloadedImages.set(photo, preloadImg);
+                }
+                
+                // 绑定点击放大事件（无延迟）
+                img.onclick = function() {
+                    openPhotoViewer(photo);
+                };
+                
+                // 加载失败处理
+                img.onerror = function() {
+                    this.alt = `${cityNames[cityKey]}照片加载失败`;
+                    this.style.border = '2px dashed #ff4444';
+                };
+                
+                photosContainer.appendChild(img);
+            });
+        }
+
+        // 关闭相册弹窗
+        function closeAlbumModal() {
+            document.getElementById('albumModal').style.display = 'none';
+            document.getElementById('modalMask').style.display = 'none';
+            closePhotoViewer();
+        }
+
+        // 打开图片放大弹窗（丝滑核心）
+        function openPhotoViewer(photoSrc) {
+            const viewer = document.getElementById('photoViewer');
+            const viewerImage = document.getElementById('viewerImage');
+            
+            // 重置图片状态
+            viewerImage.className = 'photo-viewer-content';
+            viewerImage.src = ''; // 先清空，避免旧图片闪烁
+            
+            // 立即显示弹窗（无等待）
+            viewer.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            
+            // 使用缓存的预加载图片，无延迟显示
+            const cachedImg = preloadedImages.get(photoSrc);
+            viewerImage.src = photoSrc;
+            
+            // 图片加载完成后添加过渡效果
+            viewerImage.onload = function() {
+                setTimeout(() => {
+                    viewerImage.classList.add('loaded');
+                }, 10); // 微小延迟，保证过渡生效
+            };
+            
+            // 禁止图片拖拽
+            viewerImage.ondragstart = () => false;
+        }
+
+        // 关闭图片放大弹窗
+        function closePhotoViewer() {
+            const viewer = document.getElementById('photoViewer');
+            const viewerImage = document.getElementById('viewerImage');
+            
+            // 先隐藏图片（过渡效果）
+            viewerImage.classList.remove('loaded');
+            // 延迟关闭弹窗，保证过渡丝滑
+            setTimeout(() => {
+                viewer.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 100);
+        }
+
+        // 初始化绑定
+        document.addEventListener('DOMContentLoaded', function() {
+            // 城市标注点击
+            document.querySelectorAll('.city-marker').forEach(marker => {
+                marker.addEventListener('click', function() {
+                    openAlbumModal(this.dataset.city);
+                });
+            });
+
+            // ESC键关闭
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeAlbumModal();
+                }
+            });
+
+            // 点击弹窗空白处关闭
+            document.getElementById('photoViewer').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closePhotoViewer();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

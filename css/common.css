@@ -1,70 +1,44 @@
-/* ========== 全局公共样式 ========== */
-/* 重置浏览器默认样式 */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "微软雅黑", "PingFang SC", "Helvetica Neue", sans-serif;
-}
-
-/* 页面整体样式：奶油色背景，适配手机/电脑 */
-body {
-    background-color: #f9f7f5; /* 温柔奶油白 */
-    color: #333; /* 文字主色 */
-    padding: 0 10px;
-    max-width: 1000px; /* 电脑端最大宽度，避免太宽 */
-    margin: 0 auto; /* 页面居中 */
-    padding-bottom: 80px; /* 底部留空，避免被输入框遮挡 */
-}
-
-/* ========== 全局导航栏样式 ========== */
+/* ========== 全局导航栏样式（高级蓝色系） ========== */
 .nav-bar {
-    background-color: #fff; /* 导航栏白色背景 */
-    border-radius: 12px; /* 圆角更温柔 */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* 轻微阴影，有层次感 */
+    background-color: rgba(255, 255, 255, 0.9); /* 保留毛玻璃白底 */
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     padding: 18px 0;
-    margin: 20px 0;
+    margin: 20px auto;
     text-align: center;
+    max-width: 1000px;
+    position: relative;
+    z-index: 999;
+    backdrop-filter: blur(8px);
 }
 
-/* 导航栏链接样式 */
 .nav-bar a {
-    color: #e66465; /* 温柔豆沙粉（主色） */
-    text-decoration: none; /* 去掉下划线 */
+    color: #2d7d9a; /* 主色：深海蓝（高级感） */
+    text-decoration: none;
     font-size: 16px;
-    margin: 0 12px; /* 链接之间的间距 */
+    margin: 0 12px;
     padding: 8px 12px;
     border-radius: 8px;
-    transition: all 0.3s ease; /*  hover动画 */
+    transition: all 0.3s ease;
 }
 
-/* 鼠标悬停效果 */
 .nav-bar a:hover {
-    background-color: #ffebee; /* 浅粉色背景 */
-    color: #d14848; /* 深一点的粉色 */
+    background-color: #e8f4f8; /* 浅天蓝背景（hover态） */
+    color: #1a6885; /* 深一点的蓝（hover文字） */
 }
 
-/* 当前页面的导航链接样式（后续每个页面手动加active类） */
+/* 当前页面导航高亮（蓝色系） */
 .nav-bar a.active {
-    background-color: #e66465;
-    color: #fff;
+    background-color: #2d7d9a; /* 深海蓝背景 */
+    color: #fff; /* 白色文字 */
 }
 
-/* ========== 通用标题样式 ========== */
-.page-title {
-    text-align: center;
-    color: #e66465;
-    margin: 20px 0 30px;
-    font-size: 24px;
-    font-weight: 600;
-}
-
-/* ========== 通用按钮样式（所有页面的按钮都能用） ========== */
+/* 通用按钮样式（同步换蓝色） */
 .btn {
-    background-color: #e66465;
+    background-color: #2d7d9a;
     color: #fff;
     border: none;
-    border-radius: 24px; /* 圆形按钮 */
+    border-radius: 24px;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
@@ -72,29 +46,28 @@ body {
 }
 
 .btn:hover {
-    background-color: #d14848;
+    background-color: #1a6885;
 }
 
-/* ========== 通用输入框样式 ========== */
-.input-box {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    outline: none;
-    font-size: 16px;
-    margin-bottom: 15px;
-}
-
+/* 通用输入框样式（聚焦边框换蓝色） */
 .input-box:focus {
-    border-color: #e66465; /* 聚焦时粉色边框 */
+    border-color: #2d7d9a;
 }
 
-/* ========== 通用卡片样式（用于纪念日、小数据等模块） ========== */
+/* 通用卡片样式（保留，后续同步换色） */
 .card {
     background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     padding: 20px;
     margin-bottom: 20px;
+}
+
+/* 通用页面标题（蓝色系） */
+.page-title {
+    text-align: center;
+    color: #2d7d9a; /* 深海蓝 */
+    margin: 20px 0 30px;
+    font-size: 24px;
+    font-weight: 600;
 }
