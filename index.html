@@ -3,59 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我们的小世界 | 首页</title>
+    <title>鱼与海的二人世界 | 首页</title>
     <!-- 引用公共样式文件 -->
     <link rel="stylesheet" href="css/common.css">
-    <!-- 后续添加首页专属样式 -->
+    <!-- 首页专属样式 -->
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <!-- 全局导航栏（所有页面都一样，只改active类） -->
-    <nav class="nav-bar">
-        <a href="index.html" class="active">首页</a>
-        <a href="chat.html">聊天记录</a>
-        <a href="album.html">我们的相册</a>
-        <a href="diary.html">恋爱日记</a>
-        <a href="wish.html">愿望清单</a>
-        <a href="message.html">小留言板</a>
-        <a href="plan.html">未来计划</a>
-    </nav>
-
-    <!-- 页面标题 -->
-    <h1 class="page-title">❤️ 我们的小世界</h1>
-
-    <!-- 首页内容区 -->
-    <div class="index-content">
-        <!-- 计时器模块 -->
-        <div class="timer-card card">
-            <div class="timer-title">我们相识已经</div>
-            <div class="timer-value" id="meet-timer">0天 0时 0分 0秒</div>
-            <div class="timer-desc">💘 始于初见，止于终老</div>
-            
-            <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 30px;"></div>
-            
-            <div class="timer-title">我们在一起已经</div>
-            <div class="timer-value" id="love-timer">0天 0时 0分 0秒</div>
-            <div class="timer-desc">❤️ 双向奔赴，岁岁年年</div>
+    <!-- 1. 背景滚动容器：多张照片拼接，缓慢滚动 -->
+   <div class="bg-container">
+        <!-- 第一行：向右滚动 -->
+        <div class="bg-row bg-row-1">
+            <div class="bg-photo" style="background-image: url('images/background/bg1.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg2.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg3.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg4.jpg');"></div>
+            <!-- 重复第一张，实现无缝滚动 -->
+            <div class="bg-photo" style="background-image: url('images/background/bg1.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg2.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg3.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg4.jpg');"></div>
         </div>
 
-        <!-- 纪念日模块 -->
-        <div class="memorial-card card" style="margin-top: 20px;">
-            <h3 class="memorial-title">✨ 我们的专属纪念日</h3>
-            <div id="memorial-list" class="memorial-list"></div>
+        <!-- 第二行：向左滚动 -->
+        <div class="bg-row bg-row-2">
+            <div class="bg-photo" style="background-image: url('images/background/bg5.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg6.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg7.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg8.jpg');"></div>
+            <!-- 重复第一张，实现无缝滚动 -->
+            <div class="bg-photo" style="background-image: url('images/background/bg5.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg6.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg7.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg8.jpg');"></div>
         </div>
 
-        <!-- 小数据模块 -->
-        <div class="data-card card" style="margin-top: 20px;">
-            <h3 class="data-title">📝 我们的小数据</h3>
-            <div id="data-list" class="data-list"></div>
+        <!-- 第三行：向右滚动 -->
+        <div class="bg-row bg-row-3">
+            <div class="bg-photo" style="background-image: url('images/background/bg9.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg10.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg11.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg12.jpg');"></div>
+            <!-- 重复第一张，实现无缝滚动 -->
+            <div class="bg-photo" style="background-image: url('images/background/bg9.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg10.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg11.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg12.jpg');"></div>
         </div>
+
+        <!-- 第四行：向左滚动 -->
+        <div class="bg-row bg-row-4">
+            <div class="bg-photo" style="background-image: url('images/background/bg13.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg14.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg15.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg16.jpg');"></div>
+            <!-- 重复第一张，实现无缝滚动 -->
+            <div class="bg-photo" style="background-image: url('images/background/bg13.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg14.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg15.jpg');"></div>
+            <div class="bg-photo" style="background-image: url('images/background/bg16.jpg');"></div>
+        </div>
+    </div>
+
+    <!-- 2. 背景遮罩：提升文字可读性 -->
+    <div class="bg-mask"></div>
+
+    <!-- 3. 悬浮文案+计时器层：居中显示 -->
+    <div class="float-container">
+        <h1 class="float-title">鱼与海的二人世界</h1>
+        <div class="float-timer" id="love-timer">我们相恋已经 0 天了！</div>
     </div>
 
     <!-- 引用公共脚本和首页脚本 -->
     <script src="js/common.js"></script>
     <script src="js/index.js"></script>
-    
 </body>
-
 </html>
