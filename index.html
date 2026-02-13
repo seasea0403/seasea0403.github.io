@@ -3,23 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我们的小窝 ❤️</title>
-    <!-- 引入样式文件 -->
-    <link rel="stylesheet" href="style.css">
+    <title>我们的小世界 | 首页</title>
+    <!-- 引用公共样式文件 -->
+    <link rel="stylesheet" href="css/common.css">
+    <!-- 后续添加首页专属样式 -->
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <div class="container">
-        <h1>❤️ 我们在一起的第 <span id="days">0</span> 天 ❤️</h1>
-        <div class="photo-wall">
-            <p>✨ 我们的照片墙（点击添加照片）✨</p>
-            <img src="https://picsum.photos/400/300" alt="情侣照" class="photo">
+    <!-- 全局导航栏（所有页面都一样，只改active类） -->
+    <nav class="nav-bar">
+        <a href="index.html" class="active">首页</a>
+        <a href="chat.html">聊天记录</a>
+        <a href="album.html">我们的相册</a>
+        <a href="diary.html">恋爱日记</a>
+        <a href="wish.html">愿望清单</a>
+        <a href="message.html">小留言板</a>
+        <a href="plan.html">未来计划</a>
+    </nav>
+
+    <!-- 页面标题 -->
+    <h1 class="page-title">❤️ 我们的小世界</h1>
+
+    <!-- 首页内容区 -->
+    <div class="index-content">
+        <!-- 计时器模块 -->
+        <div class="timer-card card">
+            <div class="timer-title">我们相识已经</div>
+            <div class="timer-value" id="meet-timer">0天 0时 0分 0秒</div>
+            <div class="timer-desc">💘 始于初见，止于终老</div>
+            
+            <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 30px;"></div>
+            
+            <div class="timer-title">我们在一起已经</div>
+            <div class="timer-value" id="love-timer">0天 0时 0分 0秒</div>
+            <div class="timer-desc">❤️ 双向奔赴，岁岁年年</div>
         </div>
-        <div class="message">
-            <h3>写给宝贝的话：</h3>
-            <p>遇见你，是我最幸运的事 💘</p>
+
+        <!-- 纪念日模块 -->
+        <div class="memorial-card card" style="margin-top: 20px;">
+            <h3 class="memorial-title">✨ 我们的专属纪念日</h3>
+            <div id="memorial-list" class="memorial-list"></div>
+        </div>
+
+        <!-- 小数据模块 -->
+        <div class="data-card card" style="margin-top: 20px;">
+            <h3 class="data-title">📝 我们的小数据</h3>
+            <div id="data-list" class="data-list"></div>
         </div>
     </div>
-    <!-- 引入交互文件 -->
-    <script src="script.js"></script>
+
+    <!-- 引用公共脚本和首页脚本 -->
+    <script src="js/common.js"></script>
+    <script src="js/index.js"></script>
+    
 </body>
+
 </html>

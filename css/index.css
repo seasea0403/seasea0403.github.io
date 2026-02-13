@@ -1,0 +1,96 @@
+/* ========== 首页专属样式 ========== */
+/* 计时器模块 */
+.timer-card {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.timer-title {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.timer-value {
+    font-size: 36px;
+    color: #e66465;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+.timer-desc {
+    font-size: 16px;
+    color: #888;
+}
+
+/* 纪念日模块 */
+.memorial-title {
+    font-size: 20px;
+    color: #e66465;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.memorial-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.memorial-item {
+    padding: 15px;
+    border-left: 4px solid #e66465;
+}
+
+.memorial-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.memorial-date {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.memorial-countdown {
+    font-size: 14px;
+    color: #e66465;
+    font-weight: 500;
+}
+
+/* 小数据模块（预留，先占位） */
+.data-card {
+    margin-top: 30px;
+}
+
+.data-title {
+    font-size: 20px;
+    color: #e66465;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.data-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    text-align: center;
+}
+
+.data-item {
+    padding: 15px;
+}
+
+.data-value {
+    font-size: 28px;
+    color: #e66465;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.data-name {
+    font-size: 14px;
+    color: #666;
+}
