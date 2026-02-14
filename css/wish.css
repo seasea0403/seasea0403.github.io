@@ -1,0 +1,164 @@
+/* wish.css - 愿望清单页面专属样式 */
+
+/* 页面整体容器 */
+.wish-page {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* 页面标题 */
+.wish-page .page-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 50px;
+    color: #2c3e50;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+/* 愿望板块容器 - 两列布局（核心调整） */
+.wish-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 大屏左右并列 */
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+/* 单个板块样式 */
+.wish-section {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 30px 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    height: 100%; /* 让两个板块高度一致 */
+}
+
+/* 板块标题 */
+.wish-section-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 正在实现板块标题颜色 */
+.wish-section.ongoing .wish-section-title {
+    border-color: #f39c12;
+    color: #f39c12;
+}
+
+/* 计划中板块标题颜色 */
+.wish-section.planned .wish-section-title {
+    border-color: #3498db;
+    color: #3498db;
+}
+
+/* 愿望列表 */
+.wish-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* 单个愿望项 */
+.wish-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px dashed #f0f0f0;
+    transition: background-color 0.2s ease;
+}
+
+.wish-item:last-child {
+    border-bottom: none;
+}
+
+.wish-item:hover {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding-left: 8px;
+}
+
+/* 愿望图标/标记 */
+.wish-icon {
+    font-size: 20px;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+/* 正在实现愿望标记 */
+.ongoing .wish-icon {
+    color: #f39c12;
+}
+
+/* 计划中愿望标记 */
+.planned .wish-icon {
+    color: #3498db;
+}
+
+/* 愿望内容 */
+.wish-content {
+    flex: 1;
+}
+
+/* 愿望标题 */
+.wish-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+/* 愿望描述/备注 */
+.wish-desc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+/* 进度子列表（迪士尼/环球影城专用） */
+.progress-list {
+    list-style: none;
+    padding: 0 0 0 10px;
+    margin: 8px 0 0 0;
+    font-size: 13px;
+}
+
+.progress-item {
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* 已完成的进度项 */
+.progress-item.done {
+    color: #2ecc71;
+    text-decoration: line-through;
+}
+
+/* 未完成的进度项 */
+.progress-item.pending {
+    color: #999;
+}
+
+/* 移动端适配：小屏自动变成单列 */
+@media (max-width: 768px) {
+    .wish-sections {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .wish-section {
+        padding: 20px 18px;
+    }
+    .wish-page .page-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+}
