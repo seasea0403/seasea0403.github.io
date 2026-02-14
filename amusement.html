@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我们的游乐园时光 | 鱼与海的二人世界</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/amusement.css">
+</head>
+<body>
+
+<nav class="nav-bar">
+    <a href="index.html">首页</a>
+    <a href="chat.html">聊天记录</a>
+    <a href="album.html">我们的相册</a>
+    <a href="diary.html">恋爱日记</a>
+    <a href="wish.html">愿望清单</a>
+    <a href="amusement.html" class="active">游乐园时光</a>
+    <a href="plan.html">未来计划</a>
+</nav>
+
+<div class="amusement-page">
+    <h1 class="page-title">🎡 我们的游乐园时光</h1>
+
+    <!-- 入口卡片 -->
+    <div class="park-grid">
+        <div class="park-card" data-target="disney">
+            <img src="images/amusement/cover/disney.png" class="park-bg">
+            <div class="park-name">迪士尼乐园</div>
+        </div>
+        <div class="park-card" data-target="universal">
+            <img src="images/amusement/cover/universal.png" class="park-bg">
+            <div class="park-name">环球影城</div>
+        </div>
+        <div class="park-card" data-target="happyvalley">
+            <img src="images/amusement/cover/happyvalley.png" class="park-bg">
+            <div class="park-name">欢乐谷</div>
+        </div>
+        <div class="park-card" data-target="waterpark">
+            <img src="images/amusement/cover/waterpark.png" class="park-bg">
+            <div class="park-name">水上乐园</div>
+        </div>
+        <div class="park-card" data-target="zoo">
+            <img src="images/amusement/cover/zoo.png" class="park-bg">
+            <div class="park-name">动物园</div>
+        </div>
+        <div class="park-card" data-target="other">
+            <img src="images/amusement/cover/other.png" class="park-bg">
+            <div class="park-name">其他乐园</div>
+        </div>
+    </div>
+
+    <!-- 迪士尼 -->
+    <div class="park-content" id="disney" style="display:none;">
+        <div class="content-header">🏰 迪士尼乐园</div>
+        <div class="visit-list">
+            <div class="visit-item">
+                <div class="visit-title">上海迪士尼 · 第一次</div>
+                <div class="visit-date">2024年06月25日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/disney/20240625/1.jpg">
+                    <img src="images/amusement/disney/20240625/2.jpg">
+                    <img src="images/amusement/disney/20240625/3.jpg">
+                    <img src="images/amusement/disney/20240625/4.jpg">
+                    <img src="images/amusement/disney/20240625/5.jpg">
+                </div>
+            </div>
+            <div class="visit-item">
+                <div class="visit-title">上海迪士尼 · 第二次</div>
+                <div class="visit-date">2024年06月28日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/disney/20240628/1.jpg">
+                    <img src="images/amusement/disney/20240628/2.jpg">
+                    <img src="images/amusement/disney/20240628/3.jpg">
+                    <img src="images/amusement/disney/20240628/4.jpg">
+                    <img src="images/amusement/disney/20240628/5.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 环球影城 -->
+    <div class="park-content" id="universal" style="display:none;">
+        <div class="content-header">🎢 环球影城</div>
+        <div class="visit-list">
+            <div class="visit-item">
+                <div class="visit-title">北京环球影城</div>
+                <div class="visit-date">2023年11月03日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/universal/beijing/20231103/1.jpg">
+                    <img src="images/amusement/universal/beijing/20231103/2.jpg">
+                    <img src="images/amusement/universal/beijing/20231103/3.jpg">
+                    <img src="images/amusement/universal/beijing/20231103/4.jpg">
+                </div>
+            </div>
+            <div class="visit-item">
+                <div class="visit-title">北京环球影城</div>
+                <div class="visit-date">2024年10月25日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/universal/beijing/20241025/1.jpg">
+                </div>
+            </div>
+            <div class="visit-item">
+                <div class="visit-title">北京环球影城</div>
+                <div class="visit-date">2024年10月28日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/universal/beijing/20241028/1.jpg">
+                    <img src="images/amusement/universal/beijing/20241028/2.jpg">
+                    <img src="images/amusement/universal/beijing/20241028/3.jpg">
+                    <img src="images/amusement/universal/beijing/20241028/4.jpg">
+                </div>
+            </div>
+            <div class="visit-item">
+                <div class="visit-title">北京环球影城</div>
+                <div class="visit-date">2024年11月10日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/universal/beijing/20241110/1.jpg">
+                    <img src="images/amusement/universal/beijing/20241110/2.jpg">
+                    <img src="images/amusement/universal/beijing/20241110/3.jpg">
+                    <img src="images/amusement/universal/beijing/20241110/4.jpg">
+                    <img src="images/amusement/universal/beijing/20241110/5.jpg">
+                    <img src="images/amusement/universal/beijing/20241110/6.jpg">
+                </div>
+            </div>
+            <div class="visit-item">
+                <div class="visit-title">北京环球影城</div>
+                <div class="visit-date">2024年11月24日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/universal/beijing/20241124/1.jpg">
+                    <img src="images/amusement/universal/beijing/20241124/2.jpg">
+                    <img src="images/amusement/universal/beijing/20241124/3.jpg">
+                    <img src="images/amusement/universal/beijing/20241124/4.jpg">
+                    <img src="images/amusement/universal/beijing/20241124/5.jpg">
+                </div>
+            </div>
+            <div class="visit-item">
+                <div class="visit-title">北京环球影城</div>
+                <div class="visit-date">2025年01月09日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/universal/beijing/20250109/1.jpg">
+                    <img src="images/amusement/universal/beijing/20250109/2.jpg">
+                    <img src="images/amusement/universal/beijing/20250109/3.jpg">
+                    <img src="images/amusement/universal/beijing/20250109/4.jpg">
+                    <img src="images/amusement/universal/beijing/20250109/5.jpg">
+                    <img src="images/amusement/universal/beijing/20250109/6.jpg">
+                </div>
+            </div>
+            <div class="visit-item">
+                <div class="visit-title">北京环球影城</div>
+                <div class="visit-date">2025年02月20日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/universal/beijing/20250220/1.jpg">
+                    <img src="images/amusement/universal/beijing/20250220/2.jpg">
+                    <img src="images/amusement/universal/beijing/20250220/3.jpg">
+                    <img src="images/amusement/universal/beijing/20250220/4.jpg">
+                </div>
+            </div>
+            <div class="visit-item">
+                <div class="visit-title">北京环球影城</div>
+                <div class="visit-date">2025年05月08日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/universal/beijing/20250508/1.jpg">
+                    <img src="images/amusement/universal/beijing/20250508/2.jpg">
+                    <img src="images/amusement/universal/beijing/20250508/3.jpg">
+                    <img src="images/amusement/universal/beijing/20250508/4.jpg">
+                </div>
+            </div>
+            <div class="visit-item">
+                <div class="visit-title">北京环球影城</div>
+                <div class="visit-date">2025年05月29日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/universal/beijing/20250529/1.jpg">
+                    <img src="images/amusement/universal/beijing/20250529/2.jpg">
+                    <img src="images/amusement/universal/beijing/20250529/3.jpg">
+                    <img src="images/amusement/universal/beijing/20250529/4.jpg">
+                    <img src="images/amusement/universal/beijing/20250529/5.jpg">
+                </div>
+            </div>
+            <div class="visit-item">
+                <div class="visit-title">北京环球影城</div>
+                <div class="visit-date">2025年09月08日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/universal/beijing/20250908/1.jpg">
+                    <img src="images/amusement/universal/beijing/20250908/2.jpg">
+                    <img src="images/amusement/universal/beijing/20250908/3.jpg">
+                    <img src="images/amusement/universal/beijing/20250908/4.jpg">
+                    <img src="images/amusement/universal/beijing/20250908/5.jpg">
+                </div>
+            </div>
+            <div class="visit-item">
+                <div class="visit-title">北京环球影城</div>
+                <div class="visit-date">2025年09月25日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/universal/beijing/20250925/1.jpg">
+                    <img src="images/amusement/universal/beijing/20250925/2.jpg">
+                    <img src="images/amusement/universal/beijing/20250925/3.jpg">
+                    <img src="images/amusement/universal/beijing/20250925/4.jpg">
+                </div>
+            </div>
+            <div class="visit-item">
+                <div class="visit-title">北京环球影城</div>
+                <div class="visit-date">2025年10月06日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/universal/beijing/20251006/1.jpg">
+                    <img src="images/amusement/universal/beijing/20251006/2.jpg">
+                    <img src="images/amusement/universal/beijing/20251006/3.jpg">
+                </div>
+            </div>
+            <div class="visit-item">
+                <div class="visit-title">新加坡环球影城</div>
+                <div class="visit-date">2025年08月15日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/universal/singapore/20250815/1.jpg">
+                    <img src="images/amusement/universal/singapore/20250815/2.jpg">
+                    <img src="images/amusement/universal/singapore/20250815/3.jpg">
+                    <img src="images/amusement/universal/singapore/20250815/4.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 欢乐谷 -->
+    <div class="park-content" id="happyvalley" style="display:none;">
+        <div class="content-header">🎠 北京欢乐谷</div>
+        <div class="visit-list">
+            <div class="visit-item">
+                <div class="visit-title">北京欢乐谷</div>
+                <div class="visit-date">2024年06月01日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/happyvalley/20240601/1.jpg">
+                    <img src="images/amusement/happyvalley/20240601/2.jpg">
+                    <img src="images/amusement/happyvalley/20240601/3.jpg">
+                </div>
+            </div>
+            <div class="visit-item">
+                <div class="visit-title">北京欢乐谷</div>
+                <div class="visit-date">2025年07月20日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/happyvalley/20250720/1.jpg">
+                    <img src="images/amusement/happyvalley/20250720/2.jpg">
+                    <img src="images/amusement/happyvalley/20250720/3.jpg">
+                    <img src="images/amusement/happyvalley/20250720/4.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 水上乐园 -->
+    <div class="park-content" id="waterpark" style="display:none;">
+        <div class="content-header">🌊 水上乐园</div>
+        <div class="visit-list">
+            <div class="visit-item">
+                <div class="visit-title">玛雅水乐园</div>
+                <div class="visit-date">2025年06月11日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/waterpark/maya/20250611/1.jpg">
+                    <img src="images/amusement/waterpark/maya/20250611/2.jpg">
+                    <img src="images/amusement/waterpark/maya/20250611/3.jpg">
+                    <img src="images/amusement/waterpark/maya/20250611/4.jpg">
+                    <img src="images/amusement/waterpark/maya/20250611/5.jpg">
+                </div>
+            </div>
+            <div class="visit-item">
+                <div class="visit-title">亚特兰蒂斯水世界</div>
+                <div class="visit-date">2024年01月21日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/waterpark/yatelandisi/20240121/1.jpg">
+                    <img src="images/amusement/waterpark/yatelandisi/20240121/2.jpg">
+                    <img src="images/amusement/waterpark/yatelandisi/20240121/3.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 动物园 -->
+    <div class="park-content" id="zoo" style="display:none;">
+        <div class="content-header">🐼 动物园时光</div>
+        <div class="visit-list">
+            <div class="visit-item">
+                <div class="visit-title">北京野生动物园</div>
+                <div class="visit-date">2024年06月21日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/zoo/beijing/20240621/1.jpg">
+                    <img src="images/amusement/zoo/beijing/20240621/2.jpg">
+                    <img src="images/amusement/zoo/beijing/20240621/3.jpg">
+                    <img src="images/amusement/zoo/beijing/20240621/4.jpg">
+                </div>
+            </div>
+            <div class="visit-item">
+                <div class="visit-title">北京野生动物园</div>
+                <div class="visit-date">2024年10月01日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/zoo/beijing/20241001/1.jpg">
+                    <img src="images/amusement/zoo/beijing/20241001/2.jpg">
+                    <img src="images/amusement/zoo/beijing/20241001/3.jpg">
+                    <img src="images/amusement/zoo/beijing/20241001/4.jpg">
+                    <img src="images/amusement/zoo/beijing/20241001/5.jpg">
+                </div>
+            </div>
+            <div class="visit-item">
+                <div class="visit-title">北京野生动物园</div>
+                <div class="visit-date">2025年10月05日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/zoo/beijing/20251005/1.jpg">
+                    <img src="images/amusement/zoo/beijing/20251005/2.jpg">
+                </div>
+            </div>
+            <div class="visit-item">
+                <div class="visit-title">云南野生动物园（昆明）</div>
+                <div class="visit-date">2025年01月29日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/zoo/kunming/20250129/1.jpg">
+                    <img src="images/amusement/zoo/kunming/20250129/2.jpg">
+                    <img src="images/amusement/zoo/kunming/20250129/3.jpg">
+                    <img src="images/amusement/zoo/kunming/20250129/4.jpg">
+                    <img src="images/amusement/zoo/kunming/20250129/5.jpg">
+                </div>
+            </div>
+            <div class="visit-item">
+                <div class="visit-title">新加坡夜间动物园</div>
+                <div class="visit-date">2025年08月14日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/zoo/singapore/20250814/1.jpg">
+                    <img src="images/amusement/zoo/singapore/20250814/2.jpg">
+                    <img src="images/amusement/zoo/singapore/20250814/3.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 其他乐园 -->
+    <div class="park-content" id="other" style="display:none;">
+        <div class="content-header">🎪 其他乐园</div>
+        <div class="visit-list">
+            <div class="visit-item">
+                <div class="visit-title">郑州方特欢乐世界</div>
+                <div class="visit-date">2024年07月22日</div>
+                <div class="photo-group">
+                    <img src="images/amusement/other/fangte/20240722/1.jpg">
+                    <img src="images/amusement/other/fangte/20240722/2.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 图片预览弹窗 -->
+<div id="modal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImg">
+</div>
+
+<script>
+    // 切换乐园
+    const cards = document.querySelectorAll('.park-card');
+    const contents = document.querySelectorAll('.park-content');
+
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            const target = card.dataset.target;
+            contents.forEach(c => {
+                c.style.display = (c.id === target) ? 'block' : 'none';
+            });
+        });
+    });
+
+    // 点击图片放大
+    const photos = document.querySelectorAll('.photo-group img');
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+    const close = document.querySelector('.close');
+
+    photos.forEach(img => {
+        img.addEventListener('click', () => {
+            modal.style.display = 'flex';
+            modalImg.src = img.src;
+        });
+    });
+
+    close.onclick = () => modal.style.display = 'none';
+    window.onclick = (e) => {
+        if (e.target == modal) modal.style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
