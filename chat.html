@@ -8,22 +8,243 @@
     <link rel="stylesheet" href="css/chat.css">
 </head>
 <body>
-    <!-- ========== 顶部导航栏（聊天记录高亮） ========== -->
-    <nav class="nav-bar">
-        <a href="index.html">首页</a>
-        <a href="chat.html" class="active">聊天记录</a>
-        <a href="album.html">我们的相册</a>
-        <a href="diary.html">恋爱日记</a>
-        <a href="wish.html">愿望清单</a>
-        <a href="message.html">小留言板</a>
-        <a href="plan.html">未来计划</a>
-    </nav>
 
-    <!-- 聊天记录页面原有内容（后续我们会填充） -->
-    <div class="chat-content">
-        <h1 class="page-title">💬 我们的日常甜言蜜语</h1>
-        待开发中...
-        <!-- 后续添加聊天记录内容 -->
+<!-- 顶部导航 -->
+<nav class="nav-bar">
+    <a href="index.html">首页</a>
+    <a href="chat.html" class="active">聊天记录</a>
+    <a href="album.html">旅行相册</a>
+    <a href="diary.html">恋爱日记</a>
+    <a href="wish.html">愿望清单</a>
+    <a href="amusement.html">游乐时光</a>
+</nav>
+
+<div class="chat-page">
+    <h1 class="page-title">💬 我们的聊天记录</h1>
+
+    <!-- 聊天记录卡片列表 -->
+    <div class="chat-cards">
+        <!-- 刚认识的时候 -->
+        <div class="chat-card" data-target="first-meet">
+            <div class="card-icon">✨</div>
+            <div class="card-content">
+                <div class="card-title">刚认识的时候</div>
+                <div class="card-desc"></div>
+            </div>
+        </div>
+
+        <!-- 说想念的时候（示例，后续可加） -->
+        <div class="chat-card" data-target="miss">
+            <div class="card-icon">💌</div>
+            <div class="card-content">
+                <div class="card-title">说想念的时候</div>
+                <div class="card-desc"></div>
+            </div>
+        </div>
+
+        <!-- 争吵的时候（示例，后续可加） -->
+        <div class="chat-card" data-target="quarrel">
+            <div class="card-icon">💢</div>
+            <div class="card-content">
+                <div class="card-title">争吵的时候</div>
+                <div class="card-desc"></div>
+            </div>
+        </div>
+
+        <!-- 开玩笑的时候（示例，后续可加） -->
+        <div class="chat-card" data-target="joke">
+            <div class="card-icon">😂</div>
+            <div class="card-content">
+                <div class="card-title">玩笑话</div>
+                <div class="card-desc"></div>
+            </div>
+        </div>
     </div>
+
+    <!-- 聊天弹窗容器（默认隐藏） -->
+    <div class="chat-modal" id="chat-modal">
+        <div class="chat-window">
+            <!-- 聊天头部 -->
+            <div class="chat-header">
+                <img src="images/avatar/sanwenyu.jpg" class="avatar" alt="三文鱼日记本">
+                <div class="name">三文鱼日记本</div>
+                <span class="close-btn" onclick="closeChat()">&times;</span>
+            </div>
+
+            <!-- 聊天内容区 -->
+            <div class="chat-content" id="chat-content">
+                <!-- 刚认识的聊天记录（默认展示，后续可切换） -->
+                <div class="chat-record" id="first-meet-record">
+                    <div class="msg msg-right">
+                        <img src="images/avatar/yuanbo.jpg" class="msg-avatar">
+                        <div class="msg-bubble">哈喽👋</div>
+                    </div>
+                    <div class="msg msg-left">
+                        <img src="images/avatar/sanwenyu.jpg" class="msg-avatar">
+                        <div class="msg-bubble">hihi!</div>
+                    </div>
+                    <div class="msg msg-left">
+                        <img src="images/avatar/sanwenyu.jpg" class="msg-avatar">
+                        <div class="msg-bubble">我是大一视觉传达赵彤菲</div>
+                    </div>
+                    <div class="msg msg-left">
+                        <img src="images/avatar/sanwenyu.jpg" class="msg-avatar">
+                        <div class="msg-bubble">那天就感觉你好帅好可爱 😂😭😭</div>
+                    </div>
+                    <div class="msg msg-right">
+                        <img src="images/avatar/yuanbo.jpg" class="msg-avatar">
+                        <div class="msg-bubble">🥺谢谢！</div>
+                    </div>
+                    <div class="msg msg-right">
+                        <img src="images/avatar/yuanbo.jpg" class="msg-avatar">
+                        <div class="msg-bubble">我是探微化32史园博 🤪</div>
+                    </div>
+                    <div class="msg msg-left">
+                        <img src="images/avatar/sanwenyu.jpg" class="msg-avatar">
+                        <div class="msg-bubble">好的好的</div>
+                    </div>
+                    <div class="msg msg-left">
+                        <img src="images/avatar/sanwenyu.jpg" class="msg-avatar">
+                        <div class="msg-bubble">你会玩狼人杀吗</div>
+                    </div>
+                    <div class="msg msg-right">
+                        <img src="images/avatar/yuanbo.jpg" class="msg-avatar">
+                        <div class="msg-bubble">会倒是会、、有点菜的</div>
+                    </div>
+                    <div class="msg msg-left">
+                        <img src="images/avatar/sanwenyu.jpg" class="msg-avatar">
+                        <div class="msg-bubble">啊太好了那下次可以一起玩 😭</div>
+                    </div>
+                    <div class="msg msg-right">
+                        <img src="images/avatar/yuanbo.jpg" class="msg-avatar">
+                        <div class="msg-bubble">好耶 😆</div>
+                    </div>
+                    <div class="msg msg-left">
+                        <img src="images/avatar/sanwenyu.jpg" class="msg-avatar">
+                        <div class="msg-bubble">可喜欢玩狼人杀了hhh</div>
+                    </div>
+                    <div class="msg msg-right">
+                        <img src="images/avatar/yuanbo.jpg" class="msg-avatar">
+                        <div class="msg-bubble">那就可以带我丸 🥺🥺🥺</div>
+                    </div>
+                    <div class="msg msg-left">
+                        <img src="images/avatar/sanwenyu.jpg" class="msg-avatar">
+                        <div class="msg-bubble">对 我演技很好)</div>
+                    </div>
+                    <div class="msg msg-left">
+                        <img src="images/avatar/sanwenyu.jpg" class="msg-avatar">
+                        <div class="msg-bubble">你们也是10.28新生舞会吗</div>
+                    </div>
+                    <div class="msg msg-right">
+                        <img src="images/avatar/yuanbo.jpg" class="msg-avatar">
+                        <div class="msg-bubble">对的！</div>
+                    </div>
+                </div>
+
+                <!-- 其他聊天记录（示例，后续可填充） -->
+                <div class="chat-record" id="miss-record" style="display:none;">
+                    <div class="msg msg-left">
+                        <img src="images/avatar/sanwenyu.jpg" class="msg-avatar">
+                        <div class="msg-bubble">你还没起来去上课吗 臭老婆</div>
+                    </div>
+                    <div class="msg msg-left">
+                        <img src="images/avatar/sanwenyu.jpg" class="msg-avatar">
+                        <div class="msg-bubble">我好想你哦</div>
+                    </div>
+                    <div class="msg msg-left">
+                        <img src="images/avatar/sanwenyu.jpg" class="msg-avatar">
+                        <div class="msg-bubble">但是要赚钱给老婆花</div>
+                    </div>
+                    <div class="msg msg-right">
+                        <img src="images/avatar/yuanbo.jpg" class="msg-avatar">
+                        <div class="msg-bubble">老婆</div>
+                    </div>
+                    <div class="msg msg-right">
+                        <img src="images/avatar/yuanbo.jpg" class="msg-avatar">
+                        <div class="msg-bubble">我好想你</div>
+                    </div>
+                    <div class="msg msg-right">
+                        <img src="images/avatar/yuanbo.jpg" class="msg-avatar">
+                        <div class="msg-bubble">感觉自己好脆弱</div>
+                    </div>
+                    <div class="msg msg-right">
+                        <img src="images/avatar/yuanbo.jpg" class="msg-avatar">
+                        <div class="msg-bubble">想要你抱抱我</div>
+                    </div>
+                </div>
+
+                <div class="chat-record" id="quarrel-record" style="display:none;">
+                    <div class="msg msg-left">
+                        <img src="images/avatar/sanwenyu.jpg" class="msg-avatar">
+                        <div class="msg-bubble">你继续说</div>
+                    </div>
+                    <div class="msg msg-left">
+                        <img src="images/avatar/sanwenyu.jpg" class="msg-avatar">
+                        <div class="msg-bubble">为什么给我道歉</div>
+                    </div>
+                    <div class="msg msg-left">
+                        <img src="images/avatar/sanwenyu.jpg" class="msg-avatar">
+                        <div class="msg-bubble">为什么做错了</div>
+                    </div>
+                    <div class="msg msg-left">
+                        <img src="images/avatar/sanwenyu.jpg" class="msg-avatar">
+                        <div class="msg-bubble">我还生气</div>
+                    </div>
+                </div>
+
+                <div class="chat-record" id="joke-record" style="display:none;">
+                    <div class="msg msg-right">
+                        <img src="images/avatar/yuanbo.jpg" class="msg-avatar">
+                        <div class="msg-bubble">！！！</div>
+                    </div>
+                    <div class="msg msg-left">
+                        <img src="images/avatar/sanwenyu.jpg" class="msg-avatar">
+                        <div class="msg-bubble">？？？</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 模拟输入框 -->
+            <div class="chat-input">
+                <input type="text" placeholder="Aa" disabled>
+                <button disabled>发送</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 打开对应聊天记录
+    function openChat(target) {
+        // 隐藏所有聊天记录
+        document.querySelectorAll('.chat-record').forEach(r => {
+            r.style.display = 'none';
+        });
+        // 显示目标聊天记录
+        document.getElementById(target + '-record').style.display = 'block';
+        // 显示弹窗
+        document.getElementById('chat-modal').style.display = 'flex';
+    }
+
+    // 关闭聊天弹窗
+    function closeChat() {
+        document.getElementById('chat-modal').style.display = 'none';
+    }
+
+    // 绑定卡片点击事件
+    document.querySelectorAll('.chat-card').forEach(card => {
+        card.addEventListener('click', () => {
+            openChat(card.dataset.target);
+        });
+    });
+
+    // 点击空白处关闭弹窗
+    document.getElementById('chat-modal').addEventListener('click', (e) => {
+        if (e.target.id === 'chat-modal') {
+            closeChat();
+        }
+    });
+</script>
+
 </body>
 </html>
